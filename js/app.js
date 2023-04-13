@@ -18,3 +18,12 @@ const showItem = (item, index, active) => {
   item.style.setProperty("--zIndex", zIndex);
   item.style.setProperty("--active", (index - active) / items.length);
 };
+
+const animate = () => {
+  progress = Math.max(0, Math.min(progress, 100));
+  active = Math.floor((progress / 100) * (items.length - 1));
+
+  items.forEach((item, index) => showItem(item, index, active));
+};
+
+animate();
