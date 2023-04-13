@@ -27,3 +27,11 @@ const animate = () => {
 };
 
 animate();
+
+items.forEach((item, i) => {
+  item.addEventListener("click", () => {
+    progress = (i / items.length) * 100 + 10;
+
+    animate();
+  });
+});
