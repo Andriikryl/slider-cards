@@ -54,5 +54,21 @@ const move = (e) => {
   animate();
 };
 
+const down = (e) => {
+  is_down = true;
+
+  startx = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+};
+
+const up = (e) => {
+  is_down = false;
+};
+
 document.addEventListener("mousewheel", wheel);
 document.addEventListener("mousemove", move);
+document.addEventListener("mousedown", down);
+document.addEventListener("mouseup", up);
+
+document.addEventListener("touchmove", move);
+document.addEventListener("touchstart", down);
+document.addEventListener("touchend", up);
