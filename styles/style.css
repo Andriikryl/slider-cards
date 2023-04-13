@@ -42,6 +42,7 @@
     overflow: hidden;
     pointer-events: none;
     z-index: 100;
+    mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent 100%);
   }
 
   .sliderItem{
@@ -49,6 +50,7 @@
     --y: calc(var(--active) * 200%);
     --start: calc(var(--active) * 120deg);
     --opacity: calc(var(--zIndex) / var(--items) * 3 - 2);
+
 
     position: absolute;
     z-index: var(--zIndex);
@@ -77,8 +79,17 @@
 
     transform: translate(var(--x), var(--y)) rotate(var(--start));
 
-    transition: transform 0.9s ease-in-out;
+    transition: transform 0.9s, filter 1500ms  ease-in-out;
     
+  }
+
+  .sliderItem:hover{
+    filter: brightness(1.5);
+  }
+
+  .sliderItem:has(~ .sliderItem:hover),
+  .sliderItem:hover ~ .sliderItem{
+    filter: brightness(.4);
   }
 
   .sliderItem .sliderBox{
@@ -132,4 +143,11 @@
     transition: opacity 0.9s ease-in-out;
     font-size: clamp(20px, 10vw, 50px);
     z-index: 100;
+  }
+
+  .main-title{
+    color: #fb8500;
+    font-size: 50px;
+    text-align: center;
+    padding-block-start: 50px;
   }
