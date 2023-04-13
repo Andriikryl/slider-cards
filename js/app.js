@@ -35,3 +35,24 @@ items.forEach((item, i) => {
     animate();
   });
 });
+
+const wheel = (e) => {
+  const wheelProgress = e.deltaY * speed_whell;
+  progress += wheelProgress;
+
+  animate();
+};
+
+const move = (e) => {
+  if (!is_down) return;
+  const x = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+  const mouseProgress = (x - startx) * speed_drag;
+
+  progress += mouseProgress;
+  startx = x;
+
+  animate();
+};
+
+document.addEventListener("mousewheel", wheel);
+document.addEventListener("mousemove", move);
